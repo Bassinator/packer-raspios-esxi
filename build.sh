@@ -15,4 +15,4 @@ sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null  -t $
 
 export datastore_hash=$(sshpass -e ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null  -t ${SSHUSER}@192.168.1.230 "readlink /vmfs/volumes/${DATASTORE}" | tr -d '[:space:]')
 
-packer build -debug -except=vagrant -var "datastore=${datastore_hash}" template.json
+packer build -var "datastore=${datastore_hash}" template.json

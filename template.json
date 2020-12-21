@@ -86,7 +86,7 @@
       "remote_datastore": "{{user `esxi_datastore`}}",
       "remote_username": "{{user `esxi_username`}}",
       "remote_password": "{{user `esxi_password`}}",
-      "skip_export": true,
+      "skip_export": false,
       "keep_registered": true,
       "vnc_disable_password": true
     }
@@ -98,20 +98,6 @@
     }
   ],
   "post-processors": [
-    {
-      "type": "shell-local",
-      "environment_vars": ["PROVISIONERTEST=ProvisionerTest1"],
-      "execute_command": ["bash", "-c", "{{.Vars}} {{.Script}}"],
-      "scripts": ["export.sh"]
-    },
-    {
-      "type": "artifice",
-      "files": [
-        "{{ user `build_directory` }}/raspios-buster-arm64.vmdk",
-        "{{ user `build_directory` }}/raspios-buster-arm64-flat.vmdk",
-        "{{ user `build_directory` }}/raspios.vmx"
-      ]
-    },
     {
       "output": "{{ user `build_directory` }}/{{user `box_basename`}}.{{.Provider}}.box",
       "provider_override": "vmware",
