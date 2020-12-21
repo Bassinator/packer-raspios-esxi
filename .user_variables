@@ -1,0 +1,4 @@
+SSHUSER=root
+SSHPASS=ba/76/gr
+DATASTORE=datastore1
+VM_NAME=raspios
